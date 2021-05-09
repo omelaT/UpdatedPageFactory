@@ -33,9 +33,10 @@ public class CoctailPage {
 
         @FindBy(css = "[alt=\"Raspberry Rose\"]")
         private WebElement raspberryRose;
-        public  void scroleToRoseAndClickOnItOnCoctailPage(){
+        public CoctailIngredientPage scroleToRoseAndClickOnItOnCoctailPage(){
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", raspberryRose);
             raspberryRose.click();
+            return new CoctailIngredientPage(driver);
         }
 
 

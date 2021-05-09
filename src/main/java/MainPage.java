@@ -1,13 +1,8 @@
-import org.asynchttpclient.util.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
-
-import java.util.Set;
 
 public class MainPage {
     static WebDriver driver;
@@ -123,8 +118,9 @@ public class MainPage {
     //Select China
 @FindBy(css = "[data-key=\"CN\"]")
 private WebElement selectChina;
-    public void selectChinaAndClick() {
+    public WeiboComMainPage selectChinaAndClick() {
         selectChina.click();
+        return new WeiboComMainPage(driver);
     }
 
 
@@ -134,22 +130,25 @@ private WebElement selectChina;
         return findYourWineButtonChangeLang.getText();
     }
 
-    public void clickOnIconAfterChinaSelected(){
+    public WeiboComMainPage clickOnIconAfterChinaSelected(){
         JavascriptExecutor js1 = (JavascriptExecutor) driver;
         js1.executeScript("document.querySelector('.fa.fa-weibo',':before').click();");
+        return new WeiboComMainPage(driver);
     }
 
         @FindBy(css ="[href*=\"stores\"]" )
         private WebElement whereToBueMenu;
-        public void whereToByMenuClick(){
+        public WhereToBuyPage whereToByMenuClick(){
             whereToBueMenu.click();
+            return new WhereToBuyPage(driver);
 
         }
 
         @FindBy(css = "[href*=\"cocktails\"]")
         private WebElement coctails;
-    public void clickOnCoctailPagelinkOnMainPage(){
+    public CoctailPage clickOnCoctailPagelinkOnMainPage(){
         coctails.click();
+        return new CoctailPage(driver);
 
         }
 

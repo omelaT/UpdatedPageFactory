@@ -1,4 +1,3 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -55,11 +54,12 @@ public class WelcomePage {
     @FindBy(css = "[value=\"Welcome\"]")
     private WebElement clickOnWelcomeButton;
 
-    public void checkboxClickEuropeSelectWelcomeBttonClick() {
+    public MainPage checkboxClickEuropeSelectWelcomeBttonClick() {
         checkboxClick.click();
         Select selectEuropFromDropdown = new Select(select);
         selectEuropFromDropdown.selectByVisibleText("Europe");
         clickOnWelcomeButton.click();
+        return new MainPage(driver);
     }
 
 }
